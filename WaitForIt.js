@@ -34,7 +34,7 @@
             }
             else {
                 if(Date.now() > waiter.timeout) {
-                    waiter.callback();
+                    waiter.callback(false);
                     waiter.has_fired = true;
                     fired_total += 1;
                 }
@@ -43,7 +43,7 @@
                         return fired_triggers.indexOf(val) >= 0;
                     });
                     if(canFireNow) {
-                        waiter.callback();
+                        waiter.callback(true);
                         waiter.has_fired = true;
                         fired_total += 1;
                     }
@@ -70,7 +70,7 @@
             return fired_triggers.indexOf(val) >= 0;
         });
         if(canFireImmediately) {
-            callback();
+            callback(true);
         }
         else {
             waiters.push({
@@ -88,7 +88,7 @@
             return fired_triggers.indexOf(val) >= 0;
         });
         if(canFireImmediately) {
-            return Promise.resolve();
+            return Promise.resolve(true);
         }
         else {
             var resolver_func;

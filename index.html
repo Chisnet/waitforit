@@ -23,31 +23,31 @@
     </div>
     <script>
         function waitfor_1() {
-            WaitForIt.wait_for(['1'], function(){
-                console.log('1');
+            WaitForIt.wait_for(['1'], function(success){
+                console.log('1', success);
             }, 10000);
         }
         function waitfor_2() {
-            WaitForIt.wait_for(['2'], function(){
-                console.log('2');
+            WaitForIt.wait_for(['2'], function(success){
+                console.log('2', success);
             }, 10000);
         }
         function waitfor_12() {
-            WaitForIt.wait_for(['1', '2'], function(){
-                console.log('1 and 2');
+            WaitForIt.wait_for(['1', '2'], function(success){
+                console.log('1 and 2', success);
             }, 10000);
         }
         async function awaitfor_1() {
-            await WaitForIt.await_for(['1'], 10000);
-            console.log('a1');
+            var success = await WaitForIt.await_for(['1'], 10000);
+            console.log('a1', success);
         }
         async function awaitfor_2() {
-            await WaitForIt.await_for(['2'], 10000);
-            console.log('a2');
+            var success = await WaitForIt.await_for(['2'], 10000);
+            console.log('a2', success);
         }
         async function awaitfor_12() {
-            await WaitForIt.await_for(['1', '2'], 10000);
-            console.log('a1 and a2');
+            var success = await WaitForIt.await_for(['1', '2'], 10000);
+            console.log('a1 and a2', success);
         }
         function trigger_1() {
             WaitForIt.trigger('1');
