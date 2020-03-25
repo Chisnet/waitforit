@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaitForIt Test Page</title>
+    <script src="WaitForIt.js"></script>
+</head>
+<body>
+    <div>
+        <button onclick="waitfor_1();">Wait For 1</button>
+        <button onclick="waitfor_2();">Wait For 2</button>
+        <button onclick="waitfor_12();">Wait For 1 and 2</button>
+    </div>
+    <div>
+        <button onclick="awaitfor_1();">Await For 1</button>
+        <button onclick="awaitfor_2();">Await For 2</button>
+        <button onclick="awaitfor_12();">Await For 1 and 2</button>
+    </div>
+    <div>
+        <button onclick="trigger_1();">Trigger 1</button>
+        <button onclick="trigger_2();">Trigger 2</button>
+    </div>
+    <script>
+        function waitfor_1() {
+            WaitForIt.wait_for(['1'], function(){
+                console.log('1');
+            }, 10000);
+        }
+        function waitfor_2() {
+            WaitForIt.wait_for(['2'], function(){
+                console.log('2');
+            }, 10000);
+        }
+        function waitfor_12() {
+            WaitForIt.wait_for(['1', '2'], function(){
+                console.log('1 and 2');
+            }, 10000);
+        }
+        async function awaitfor_1() {
+            await WaitForIt.await_for(['1'], 10000);
+            console.log('a1');
+        }
+        async function awaitfor_2() {
+            await WaitForIt.await_for(['2'], 10000);
+            console.log('a2');
+        }
+        async function awaitfor_12() {
+            await WaitForIt.await_for(['1', '2'], 10000);
+            console.log('a1 and a2');
+        }
+        function trigger_1() {
+            WaitForIt.trigger('1');
+        }
+        function trigger_2() {
+            WaitForIt.trigger('2');
+        }
+    </script>
+</body>
+</html>
