@@ -34,7 +34,12 @@
             }
             else {
                 if(Date.now() > waiter.timeout) {
-                    waiter.callback(false);
+                    try {
+                        waiter.callback(false);
+                    }
+                    catch(e) {
+                        console.error(e);
+                    }
                     waiter.has_fired = true;
                     fired_total += 1;
                 }
@@ -43,7 +48,12 @@
                         return fired_triggers.indexOf(val) >= 0;
                     });
                     if(canFireNow) {
-                        waiter.callback(true);
+                        try {
+                            waiter.callback(true);
+                        }
+                        catch(e) {
+                            console.error(e);
+                        }
                         waiter.has_fired = true;
                         fired_total += 1;
                     }

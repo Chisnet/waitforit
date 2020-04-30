@@ -10,16 +10,19 @@
     <div>
         <button onclick="waitfor_1();">Wait For 1</button>
         <button onclick="waitfor_2();">Wait For 2</button>
+        <button onclick="waitfor_3();">Wait For 3</button>
         <button onclick="waitfor_12();">Wait For 1 and 2</button>
     </div>
     <div>
         <button onclick="awaitfor_1();">Await For 1</button>
         <button onclick="awaitfor_2();">Await For 2</button>
+        <button onclick="awaitfor_3();">Await For 3</button>
         <button onclick="awaitfor_12();">Await For 1 and 2</button>
     </div>
     <div>
         <button onclick="trigger_1();">Trigger 1</button>
         <button onclick="trigger_2();">Trigger 2</button>
+        <button onclick="trigger_3();">Trigger 3</button>
     </div>
     <script>
         function waitfor_1() {
@@ -30,6 +33,13 @@
         function waitfor_2() {
             WaitForIt.wait_for(['2'], function(success){
                 console.log('2', success);
+            }, 10000);
+        }
+        function waitfor_3() {
+            WaitForIt.wait_for(['3'], function(success){
+                cause_error();
+                // Should not get here!
+                console.log('3', success);
             }, 10000);
         }
         function waitfor_12() {
@@ -45,6 +55,12 @@
             var success = await WaitForIt.await_for(['2'], 10000);
             console.log('a2', success);
         }
+        async function awaitfor_3() {
+            var success = await WaitForIt.await_for(['3'], 10000);
+            cause_error();
+            // Should not get here!
+            console.log('a3', success);
+        }
         async function awaitfor_12() {
             var success = await WaitForIt.await_for(['1', '2'], 10000);
             console.log('a1 and a2', success);
@@ -54,6 +70,9 @@
         }
         function trigger_2() {
             WaitForIt.trigger('2');
+        }
+        function trigger_3() {
+            WaitForIt.trigger('3');
         }
     </script>
 </body>
