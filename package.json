@@ -1,0 +1,30 @@
+{
+  "name": "waitforit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "WaitForIt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chisnet/waitforit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chisnet/waitforit/issues"
+  },
+  "homepage": "https://github.com/Chisnet/waitforit#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "regenerator-runtime": "^0.13.7",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {}
+}
